@@ -95,8 +95,9 @@ public class Writer {
 		
 		String output = this.bldr.toString();
 		
-		FileWriter fw = new FileWriter(path + ".scnfg");
-		PrintWriter pw = new PrintWriter(fw);
+		File file = new File(path + ".scnfg");
+		file.getParentFile().mkdirs();
+		PrintWriter pw = new PrintWriter(new FileWriter(file));
 		
 		pw.print(output);
 		pw.close();

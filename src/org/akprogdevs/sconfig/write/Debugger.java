@@ -25,7 +25,7 @@ public class Debugger {
 		
 		try	{
 			
-			wtr.printWriter("test");
+			wtr.printWriter("test\\test");
 			
 		} catch (IOException e) {
 			
