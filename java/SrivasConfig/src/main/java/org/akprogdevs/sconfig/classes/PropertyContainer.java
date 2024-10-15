@@ -2,7 +2,7 @@ package org.akprogdevs.sconfig.classes;
 
 import java.util.ArrayList;
 
-class PropertyContainer {
+abstract class PropertyContainer {
 
 	//List of properties ArrayList
 	protected ArrayList<Property> properties;

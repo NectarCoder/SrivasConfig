@@ -1,0 +1,94 @@
+{SrivasConfig-scnfg-version:1.0}
+
+$	Properties require to be enclosed within angle brackets. Config/module headers and comments are excempt from this.
+$	All dollar signs indicate a line comment and all characters after the dollar sign will be ignored.
+$	As of version 1.0, multiline comments are not supported (you need to add a $ for each line)
+
+
+$	The header <SrivasConfig-cnfg-version:X> MUST be the first string in 
+$	the file or else it will be considered as invalid. Newer libraries 
+$	can read older cnfg versions but older libraries cannot read 
+$	newer cnfg versions.
+
+$	Property names CANNOT contain spaces. Values can have spaces.
+$	Keywords cannot be property or setting names. 
+$	Note that in this document 'property' and 'setting' are NOT keywords.
+$	The list of keywords in SrivasConfig is given at the end of this specification.
+
+$	Below is a sample, simple syntax of a property and it's setting:
+<property:setting>
+
+$	Below is a sample, syntax of property with list of valid settings:
+<property:setting[setting, setting1, setting2, setting3]>
+
+$	Below is a sample, syntax of property with list of valid settings.
+$	with default value of 'setting2'. However property is still set to 'setting'
+<property:setting[setting,setting1,default.setting2]>
+
+$	A property cannot be empty, if there is no setting for the property use 
+$	the 'novalue' keyword like so: 
+<property:novalue>
+$	NOTE: Lists are compatible with a novalue setting, and if there is a default setting it will be ignored.>
+	
+$	Enforce use of the default value
+<property:usedefault[setting,setting1,default.setting2]>
+
+$	Repeated properties - latest is take and earlier ones ignored
+<property:setting>
+<property:setting1>
+$	property is set to setting1
+
+$	SETTING VALUES
+
+$	String - use quotes if using spaces. There is no separate indication for 
+$	char/characters, use characters as a String.
+<property:mySetting>
+<property:"my setting">
+
+$	Integer/Float/Double/Long/All numbers
+<property:1024>
+
+$	Boolean - true and false are keywords and cannot be used for property names:
+<property:true>
+<property:false>
+
+$	MODULES
+
+$	Modules are a set of properties for better organization. 
+$	A property of the same name can be inside and outside of the
+$	module, and are considered as different properties. 
+$	All the normal property rules mentioned above apply inside a module.
+$	Nested modules are not yet supported.
+
+	
+$	Example
+{myModule}
+	<property:setting>
+	<property2:setting1>
+{myModule:end}
+$	NOTE: The 'end' in the footer is a keyword. Cannot be used for property names.
+$	Duplicate modules will lead to an error during parsing. There cannot be duplicate modules.
+
+$	And that's about it. This is the documentation for the version 1 of Srivas Config - made to be simple.
+$	It should be noted this is not an advanced configuration solution 
+$	like JSON, XML, etc. - it is just to save and 
+$	retrieve values saved in textboxes, boolean flags, etc.	
+
+
+$ KEYWORDS 
+$	true
+$	false
+$	end
+$	novalue
+$	usedefault
+$	default
+$	scnfg
+$
+$ 	As mentioned previously, keywords cannot be module or property names. 
+$ 	They can be values.
+
+
+$	All configurations must end with the following line.
+$	Any comments, properties, modules, etc will be ignored after this line.
+
+{scnfg:end}
