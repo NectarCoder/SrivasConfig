@@ -1,3 +1,4 @@
+# Rust build output
 debug/
 target/
 
@@ -10,3 +11,29 @@ Cargo.lock
 
 # MSVC Windows builds of rustc generate these, which store debugging information
 *.pdb
+## Rust-specific exclusions
+# Coverage output
+coverage/
+*.profraw
+*.profdata
+
+# Benchmark and profiling output
+criterion/
+flamegraph.svg
+
+# Build artifacts
+*.rlib
+*.rmeta
+*.d
+
+# Cargo specific
+.cargo/
+.rustup/
+
+# IDEs and editors
+.DS_Store
+*.sublime*
+.history/
+.env
+.vscode/
+.idea/
